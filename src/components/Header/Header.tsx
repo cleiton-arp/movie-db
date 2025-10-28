@@ -1,6 +1,6 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useTheme } from '../../contexts/ThemeContext';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useTheme } from "../../contexts/ThemeContext";
 import {
   HeaderContainer,
   Logo,
@@ -8,40 +8,56 @@ import {
   SearchBar,
   RightSection,
   ActionButtons,
-  ToggleButton
-} from './Header.styles';
+  ToggleButton,
+} from "./Header.styles";
+import { useNavigate } from "react-router-dom";
 
 export const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
 
   const onToggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'pt' : 'en';
+    const newLang = i18n.language === "en" ? "pt" : "en";
     i18n.changeLanguage(newLang);
-    localStorage.setItem('lang', newLang);
+    localStorage.setItem("lang", newLang);
+  };
+
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && query.trim() !== "") {
+      navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
   };
 
   return (
     <HeaderContainer>
-
       <div className="main-header">
         <NavLinks>
-          <a href="/"><Logo>MovieDB</Logo></a>
+          <a href="/">
+            <Logo>MovieDB</Logo>
+          </a>
         </NavLinks>
 
-        <SearchBar type="text" placeholder={t('search.placeholder')} />
+        <SearchBar
+          type="text"
+          placeholder={t("search.placeholder")}
+          onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={handleKeyDown}
+        />
 
         <NavLinks>
-          <a href="/">{t('nav.home')}</a>
-          <a href="/favorites">{t('nav.favorites')}</a>
+          <a href="/">{t("nav.home")}</a>
+          <a href="/favorites">{t("nav.favorites")}</a>
         </NavLinks>
         <RightSection>
           <ActionButtons>
             <ToggleButton onClick={toggleTheme}>
-              {theme === 'light' ? '🌙' : '☀️'}
+              {theme === "light" ? "🌙" : "☀️"}
             </ToggleButton>
             <ToggleButton onClick={onToggleLanguage}>
-              {i18n.language === 'en' ? 'en' : '🇧🇷'}
+              {i18n.language === "en" ? "en" : "🇧🇷"}
             </ToggleButton>
           </ActionButtons>
         </RightSection>

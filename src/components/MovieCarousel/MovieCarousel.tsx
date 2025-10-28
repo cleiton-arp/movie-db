@@ -11,11 +11,12 @@ interface Movie {
 
 interface MovieCarouselProps {
   movies: Movie[];
+  contrast?: string;
 }
 
-const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
+const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies, contrast }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCount = 6; // filmes exibidos por vez
+  const visibleCount = 6;
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(prev - visibleCount, 0));
@@ -58,6 +59,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
                 : "/placeholder.jpg"
             }
             rating={movie.vote_average}
+            contrast={contrast}
           />
         ))}
       </CarouselContainer>
