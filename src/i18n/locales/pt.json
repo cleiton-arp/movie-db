@@ -1,0 +1,13 @@
+{
+  "welcome": "Bem-vindo ao projeto React!",
+  "home_description": "Descrição, home",
+  "change_language": "Mudar idioma",
+  "search": {
+    "placeholder": "Buscar..."
+  },
+  "nav": {
+    "home": "Home",
+    "details": "Detalhes",
+    "favorites": "Favoritos"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome to the React project!",
+  "home_description": "Description, home",
+  "change_language": "Change language",
+  "search": {
+    "placeholder": "Search..."
+  },
+  "nav": {
+    "home": "Home",
+    "details": "Details",
+    "favorites": "Favorites"
+  }
+}
