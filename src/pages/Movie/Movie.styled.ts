@@ -1,43 +1,37 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1200px; 
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+`;
+
+export const Poster = styled.img`
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
-  text-align: center;
-`;
+  gap: 8px;
 
-export const Title = styled.h1`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 1rem;
-`;
-
-export const Subtitle = styled.p`
-  font-size: 1.2rem;
-  max-width: 600px;
-  color: ${({ theme }) => theme.colors.text};
-  opacity: 0.85;
-`;
-
-export const ActionButtons = styled.div`
-  margin-top: 2rem;
-
-  button {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      opacity: 0.9;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
   }
 `;

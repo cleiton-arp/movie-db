@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   MovieImage,
@@ -7,14 +8,21 @@ import {
 } from "./MovieCard.styles";
 
 interface MovieCardProps {
+  id: number;
   title: string;
   image: string;
   rating?: number; // opcional
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ title, image, rating }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ id, title, image, rating }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movie/${id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <MovieImage src={image} alt={title} />
       <MovieTitle>{title}</MovieTitle>
       <MovieRatingContainer>

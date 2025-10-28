@@ -9,6 +9,12 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+   &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 `;
 
 export const MovieImage = styled.img`

@@ -49,6 +49,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
       <CarouselContainer>
         {visibleMovies.map((movie) => (
           <MovieCard
+            id={movie.id}
             key={movie.id}
             title={movie.title}
             image={
