@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/http";
 import type { Movie } from "../../services/tmdb";
 import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 interface TMDBResponse {
   page: number;
@@ -39,6 +40,7 @@ export default function Home() {
   return (
     <Container>
       <Title>Filmes Populares</Title>
+      {loading ? <LoadingSpinner /> : <></>}
       <MovieCarousel movies={movies} />
     </Container>
   );

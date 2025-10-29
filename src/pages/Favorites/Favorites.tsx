@@ -10,6 +10,7 @@ import { useFavorites } from "../../contexts/FavoritesContext";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { useEffect, useMemo, useState } from "react";
 import api from "../../services/http";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 interface Movie {
   id: number;
@@ -22,6 +23,7 @@ export default function Favorites() {
   const { favorites } = useFavorites();
   const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
   const [sortOption, setSortOption] = useState("a-z");
+  const [loading, setLoading] = useState(true);
 
   const sortedFavorites = useMemo(() => {
     if (!favoriteMovies || favoriteMovies.length === 0) return [];
@@ -56,8 +58,11 @@ export default function Favorites() {
 
   useEffect(() => {
     const fetchFavorites = async () => {
+      setLoading(true);
+
       if (!favorites || favorites.length === 0) {
         setFavoriteMovies([]);
+        setLoading(false);
         return;
       }
 
@@ -68,6 +73,8 @@ export default function Favorites() {
         setFavoriteMovies(movies);
       } catch (error) {
         console.error("Erro ao buscar filmes favoritos:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -92,7 +99,17 @@ export default function Favorites() {
         </SortSelect>
       </SortSelectWrapper>
 
-      {sortedFavorites.length === 0 ? (
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+          }}
+        >
+          <LoadingSpinner />
+        </div>
+      ) : sortedFavorites.length === 0 ? (
         <EmptyState>Você ainda não favoritou nenhum filme.</EmptyState>
       ) : (
         <Grid>

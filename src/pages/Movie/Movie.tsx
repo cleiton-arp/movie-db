@@ -7,6 +7,7 @@ import { useFavorites } from "../../contexts/FavoritesContext";
 import { FavoriteIcon } from "../../components/MovieCard/MovieCard.styles";
 import HeartFilled from "../../assets/svg/heart-filled.svg";
 import HeartOutline from "../../assets/svg/heart-outline.svg";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 interface Movie {
   id: number;
@@ -44,7 +45,7 @@ export default function Movie() {
       try {
         const response = await api.get(`/movie/${id}`, {});
         setMovie(response.data);
-      } catch (err) {
+      } catch (error) {
         console.error("Erro ao buscar o filme:", error);
       } finally {
         setLoading(false);
@@ -54,7 +55,17 @@ export default function Movie() {
     if (id) fetchMovie();
   }, []);
 
-  if (!movie) return <p>Carregando...</p>;
+  if (loading) {
+    return (
+      <Container
+        style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}
+      >
+        <LoadingSpinner />
+      </Container>
+    );
+  }
+
+  if (!movie) return <p>{error || "Filme não encontrado."}</p>;
 
   return (
     <Container>
