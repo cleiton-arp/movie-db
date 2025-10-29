@@ -1,43 +1,34 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+export const PageContainer = styled.div`
   padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
 `;
 
-export const Subtitle = styled.p`
-  font-size: 1.2rem;
-  max-width: 600px;
-  color: ${({ theme }) => theme.colors.text};
-  opacity: 0.85;
-`;
+export const Grid = styled.div`
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 
-export const ActionButtons = styled.div`
-  margin-top: 2rem;
-
-  button {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      opacity: 0.9;
-    }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+`;
+
+export const EmptyState = styled.p`
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
 `;
