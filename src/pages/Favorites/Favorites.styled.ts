@@ -32,3 +32,27 @@ export const EmptyState = styled.p`
   color: #888;
   font-size: 1.1rem;
 `;
+
+export const SortSelectWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  justify-content: flex-start;
+`;
+
+export const SortSelect = styled.select`
+  background-color: #e6e6e6;
+  color: #222;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: #dcdcdc;
+  border-color: #aaa;
+  }
+`;

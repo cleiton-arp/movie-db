@@ -1,7 +1,14 @@
-import { EmptyState, Grid, PageContainer, Title } from "./Favorites.styled";
+import {
+  EmptyState,
+  Grid,
+  PageContainer,
+  SortSelect,
+  SortSelectWrapper,
+  Title,
+} from "./Favorites.styled";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import MovieCard from "../../components/MovieCard/MovieCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import api from "../../services/http";
 
 interface Movie {
@@ -14,10 +21,42 @@ interface Movie {
 export default function Favorites() {
   const { favorites } = useFavorites();
   const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
+  const [sortOption, setSortOption] = useState("a-z");
+
+  const sortedFavorites = useMemo(() => {
+    if (!favoriteMovies || favoriteMovies.length === 0) return [];
+
+    const sorted = [...favoriteMovies];
+
+    switch (sortOption) {
+      case "a-z":
+        return sorted.sort((a, b) =>
+          String(a.title ?? "").localeCompare(String(b.title ?? ""), "pt", {
+            sensitivity: "base",
+          })
+        );
+      case "z-a":
+        return sorted.sort((a, b) =>
+          String(b.title ?? "").localeCompare(String(a.title ?? ""), "pt", {
+            sensitivity: "base",
+          })
+        );
+      case "rating-desc":
+        return sorted.sort(
+          (a, b) => (b.vote_average || 0) - (a.vote_average || 0)
+        );
+      case "rating-asc":
+        return sorted.sort(
+          (a, b) => (a.vote_average || 0) - (b.vote_average || 0)
+        );
+      default:
+        return sorted;
+    }
+  }, [favoriteMovies, sortOption]);
 
   useEffect(() => {
     const fetchFavorites = async () => {
-      if (favorites.length === 0) {
+      if (!favorites || favorites.length === 0) {
         setFavoriteMovies([]);
         return;
       }
@@ -32,8 +71,6 @@ export default function Favorites() {
       }
     };
 
-    console.log("favoriteMovies", favoriteMovies);
-
     fetchFavorites();
   }, [favorites]);
 
@@ -41,21 +78,33 @@ export default function Favorites() {
     <PageContainer>
       <Title>Meus Favoritos</Title>
 
-      {favorites.length === 0 ? (
+      <SortSelectWrapper>
+        <label htmlFor="sort">Ordenar por:</label>
+        <SortSelect
+          id="sort"
+          value={sortOption}
+          onChange={(event) => setSortOption(event.target.value)}
+        >
+          <option value="a-z">Alfabética (A–Z)</option>
+          <option value="z-a">Alfabética (Z–A)</option>
+          <option value="rating-desc">Nota (Maior → Menor)</option>
+          <option value="rating-asc">Nota (Menor → Maior)</option>
+        </SortSelect>
+      </SortSelectWrapper>
+
+      {sortedFavorites.length === 0 ? (
         <EmptyState>Você ainda não favoritou nenhum filme.</EmptyState>
       ) : (
         <Grid>
-          {favoriteMovies.map((movie) => (
-            <div>
-              <MovieCard
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                rating={movie.vote_average}
-                isFavoritesPage
-              />
-            </div>
+          {sortedFavorites.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              rating={movie.vote_average}
+              isFavoritesPage
+            />
           ))}
         </Grid>
       )}
