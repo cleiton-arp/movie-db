@@ -1,11 +1,11 @@
 import {
-  EmptyState,
-  Grid,
   PageContainer,
-  SortSelect,
-  SortSelectWrapper,
   Title,
+  SortSelectWrapper,
+  SortSelect,
+  EmptyState,
 } from "./Favorites.styled";
+import { MoviesGrid } from "../Search/Search.styled"; // <-- importar o grid padrão
 import { useFavorites } from "../../contexts/FavoritesContext";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { useEffect, useMemo, useState } from "react";
@@ -112,18 +112,27 @@ export default function Favorites() {
       ) : sortedFavorites.length === 0 ? (
         <EmptyState>Você ainda não favoritou nenhum filme.</EmptyState>
       ) : (
-        <Grid>
-          {sortedFavorites.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              rating={movie.vote_average}
-              isFavoritesPage
-            />
-          ))}
-        </Grid>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+            gap: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          <MoviesGrid>
+            {sortedFavorites.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                rating={movie.vote_average}
+                isFavoritesPage
+              />
+            ))}
+          </MoviesGrid>
+        </div>
       )}
     </PageContainer>
   );

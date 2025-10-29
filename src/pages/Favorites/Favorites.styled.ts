@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
   padding: 2rem;
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
+  text-align: center;
 `;
 
 export const Title = styled.h1`
@@ -15,16 +18,24 @@ export const Title = styled.h1`
 
 export const Grid = styled.div`
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1350px) {
+    grid-template-columns: repeat(6, 1fr);
+  }  
 `;
 
 export const EmptyState = styled.p`

@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 export const Card = styled.div`
   width: 200px;
+  height: 400px;
   background-color: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
@@ -9,12 +10,16 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  padding-bottom: 5px;
   cursor: pointer;
 `;
 
 export const MovieImage = styled.img`
   width: 100%;
   height: auto;
+  object-fit: cover;
+  display: block;
 `;
 
 export const MovieTitle = styled.h3`
