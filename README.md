@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# 🎬 MovieDB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação React que consome a API do The Movie Database (TMDB)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## React Compiler
+### **Base do Projeto**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **[React 19](https://reactjs.org/)**
+- **[Vite](https://vitejs.dev/)**
+- **[TypeScript](https://www.typescriptlang.org/pt/docs/)**
+- **[React Router DOM 7](https://github.com/remix-run/react-router)**
 
-## Expanding the ESLint configuration
+### **Internacionalização**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **i18next** e **react-i18next**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### **HTTP**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **[Axios](https://axios-http.com/ptbr/docs/intro)**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### **Testes**
+
+- **[Jest](https://jestjs.io/)**
+
+### **Documentação de Componentes**
+
+- **Storybook 10**
+
+## API Utilizada
+
+O projeto consome a API do **[The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api)** para buscar informações sobre filmes
+
+> Para acessar a API, você precisa de uma **chave de API** gratuita, que pode ser obtida em:  
+> [https://www.themoviedb.org](https://www.themoviedb.org)
+
+## Configuração do Ambiente
+
+### 🔧 Pré-requisitos
+
+Antes de iniciar, é necessário ter instalado:
+
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- [npm](https://www.npmjs.com/)
+
+---
+
+## Como Rodar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/cleiton-arp/movie-db
+cd movie-db
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instalar as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Rodar o projeto em modo desenvolvimento
+
+```bash
+npm run dev
+```
+
+### 3. Rodar testes
+
+```bash
+npm run test
 ```
