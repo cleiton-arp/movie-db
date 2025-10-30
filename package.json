@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "test": "jest",
     "preview": "vite preview",
+    "deploy": "gh-pages -d dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
