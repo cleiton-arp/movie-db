@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { Container, Info, Poster } from "./Movie.styled";
 import api from "../../services/http";
 import { useEffect, useState } from "react";
@@ -22,10 +22,10 @@ interface Movie {
 }
 
 export default function Movie() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -67,7 +67,7 @@ export default function Movie() {
     );
   }
 
-  if (!movie) return <p>{error || "Filme não encontrado."}</p>;
+  if (!movie) return <p>{"Filme não encontrado."}</p>;
 
   return (
     <Container>

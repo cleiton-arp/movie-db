@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { useTheme } from "../../contexts/ThemeContext";
+// import { useTranslation } from "react-i18next";
+// import { useTheme } from "../../contexts/useTheme";
 import {
   Card,
   Page,
@@ -16,8 +16,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function NotFound() {
-  const { t } = useTranslation();
-  const { theme, toggleTheme } = useTheme();
+  // const { t } = useTranslation();
+  // const { theme, toggleTheme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export default function NotFound() {
           <Title id="notfound-title">Ops! Página não encontrada</Title>
           <Subtitle>
             Parece que este filme saiu da tela — ou você se perdeu nos
-            corredores do streaming. Talvez ele tenha ido tomar pipoca. 🍿
+            corredores do streaming. Talvez ele tenha ido tomar pipoca.
           </Subtitle>
 
           <SuggestionList>

@@ -4,19 +4,7 @@
 
 import '@testing-library/jest-dom'; // Matchers do RTL
 
-import { TextEncoder, TextDecoder } from 'util';
-
-declare global {
-  namespace NodeJS {
-    interface Global {
-      TextEncoder: typeof TextEncoder;
-      TextDecoder: typeof TextDecoder;
-    }
-  }
-}
-
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
+// ✅ NÃO precisa redefinir TextEncoder/TextDecoder em Node 18+
 
 jest.mock('react-router-dom', () => {
   const actual = jest.requireActual('react-router-dom');
@@ -25,7 +13,6 @@ jest.mock('react-router-dom', () => {
     useNavigate: () => jest.fn(),
   };
 });
-
 
 class LocalStorageMock {
   private store: Record<string, string> = {};
