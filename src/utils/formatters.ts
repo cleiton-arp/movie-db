@@ -3,9 +3,7 @@
  * @param rating Nota do filme (number)
  * @returns String da nota com 1 casa decimal
  */
-export function formatMovieRating(rating: number): string {
-  if (typeof rating !== "number" || isNaN(rating)) {
-    return "0.0";
-  }
+export function formatMovieRating(rating?: number): string {
+  if (rating === undefined || isNaN(rating)) return "0.0";
   return rating.toFixed(1);
 }
