@@ -8,6 +8,8 @@ import { FavoriteIcon } from "../../components/MovieCard/MovieCard.styles";
 import HeartFilled from "../../assets/svg/heart-filled.svg";
 import HeartOutline from "../../assets/svg/heart-outline.svg";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { formatMovieRating } from "../../utils/formatters";
+import { formatDateBR } from "../../utils/date";
 
 interface Movie {
   id: number;
@@ -96,10 +98,11 @@ export default function Movie() {
           <strong>Gêneros:</strong> {movie.genres.map((g) => g.name).join(", ")}
         </p>
         <p>
-          <strong>Data de lançamento:</strong> {movie.release_date}
+          <strong>Data de lançamento:</strong>{" "}
+          {formatDateBR(movie.release_date)}
         </p>
         <p>
-          <strong>Nota:</strong> ⭐ {movie.vote_average}
+          <strong>Nota:</strong> ⭐ {formatMovieRating(movie.vote_average)}
         </p>
         <p>
           <strong>Sinopse:</strong> {movie.overview}

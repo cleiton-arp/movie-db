@@ -14,6 +14,7 @@ import HeartOutline from "../../assets/svg/heart-outline.svg";
 import TrashIcon from "../../assets/svg/trash-icon.svg";
 import { useState } from "react";
 import { useFavorites } from "../../contexts/FavoritesContext";
+import { formatMovieRating } from "../../utils/formatters";
 
 interface MovieCardProps {
   id: number;
@@ -95,7 +96,9 @@ const MovieCard: React.FC<MovieCardProps> = ({
         <MovieImage src={image} alt={title} />
         <MovieTitle>{renderTitle()}</MovieTitle>
         <MovieRatingContainer>
-          {rating && <MovieRatingText>⭐ {rating}</MovieRatingText>}
+          {rating && (
+            <MovieRatingText>⭐ {formatMovieRating(rating)}</MovieRatingText>
+          )}
         </MovieRatingContainer>
       </Card>
     </CardWrapper>

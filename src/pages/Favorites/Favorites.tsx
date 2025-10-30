@@ -4,6 +4,9 @@ import {
   SortSelectWrapper,
   SortSelect,
   EmptyState,
+  EmptyImage,
+  OverlayContent,
+  CTAButton,
 } from "./Favorites.styled";
 import { MoviesGrid } from "../Search/Search.styled"; // <-- importar o grid padrão
 import { useFavorites } from "../../contexts/FavoritesContext";
@@ -11,6 +14,8 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import { useEffect, useMemo, useState } from "react";
 import api from "../../services/http";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
+import movieTheather from "../../assets/images/movieTheather.png"; //
 
 interface Movie {
   id: number;
@@ -24,6 +29,7 @@ export default function Favorites() {
   const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
   const [sortOption, setSortOption] = useState("a-z");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const sortedFavorites = useMemo(() => {
     if (!favoriteMovies || favoriteMovies.length === 0) return [];
@@ -85,20 +91,6 @@ export default function Favorites() {
     <PageContainer>
       <Title>Meus Favoritos</Title>
 
-      <SortSelectWrapper>
-        <label htmlFor="sort">Ordenar por:</label>
-        <SortSelect
-          id="sort"
-          value={sortOption}
-          onChange={(event) => setSortOption(event.target.value)}
-        >
-          <option value="a-z">Alfabética (A–Z)</option>
-          <option value="z-a">Alfabética (Z–A)</option>
-          <option value="rating-desc">Nota (Maior → Menor)</option>
-          <option value="rating-asc">Nota (Menor → Maior)</option>
-        </SortSelect>
-      </SortSelectWrapper>
-
       {loading ? (
         <div
           style={{
@@ -110,29 +102,50 @@ export default function Favorites() {
           <LoadingSpinner />
         </div>
       ) : sortedFavorites.length === 0 ? (
-        <EmptyState>Você ainda não favoritou nenhum filme.</EmptyState>
+        <EmptyState>
+          <EmptyImage src={movieTheather} alt="Nenhum favorito ainda" />
+          <OverlayContent>
+            Você ainda não favoritou nenhum filme.
+            <CTAButton onClick={() => navigate("/")}>Explorar...</CTAButton>
+          </OverlayContent>
+        </EmptyState>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: "1rem",
-            marginTop: "1rem",
-          }}
-        >
-          <MoviesGrid>
-            {sortedFavorites.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                rating={movie.vote_average}
-                isFavoritesPage
-              />
-            ))}
-          </MoviesGrid>
-        </div>
+        <>
+          <SortSelectWrapper>
+            <label htmlFor="sort">Ordenar por:</label>
+            <SortSelect
+              id="sort"
+              value={sortOption}
+              onChange={(event) => setSortOption(event.target.value)}
+            >
+              <option value="a-z">Alfabética (A–Z)</option>
+              <option value="z-a">Alfabética (Z–A)</option>
+              <option value="rating-desc">Nota (Maior → Menor)</option>
+              <option value="rating-asc">Nota (Menor → Maior)</option>
+            </SortSelect>
+          </SortSelectWrapper>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+              gap: "1rem",
+              marginTop: "1rem",
+            }}
+          >
+            <MoviesGrid>
+              {sortedFavorites.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  rating={movie.vote_average}
+                  isFavoritesPage
+                />
+              ))}
+            </MoviesGrid>
+          </div>
+        </>
       )}
     </PageContainer>
   );

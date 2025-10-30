@@ -6,6 +6,7 @@ import "./i18n";
 import { Header } from "./components/Header";
 import { useState } from "react";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
+import { Layout } from "./components/Layout/Layout";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -15,9 +16,10 @@ export default function App() {
     <ThemeContextProvider>
       <BrowserRouter>
         <FavoritesProvider>
-          <Header />
           <GlobalStyle />
-          <AppRoutes />
+          <Layout>
+            <AppRoutes />
+          </Layout>
         </FavoritesProvider>
       </BrowserRouter>
     </ThemeContextProvider>

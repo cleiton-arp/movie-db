@@ -5,15 +5,14 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
   padding: 2rem;
   text-align: center;
 `;
 
 export const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 1rem;
 `;
 
 export const Grid = styled.div`
@@ -38,10 +37,14 @@ export const Grid = styled.div`
   }  
 `;
 
-export const EmptyState = styled.p`
+export const EmptyState = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   color: #888;
   font-size: 1.1rem;
+  position: relative;
 `;
 
 export const SortSelectWrapper = styled.div`
@@ -65,5 +68,44 @@ export const SortSelect = styled.select`
   &:hover {
     background-color: #dcdcdc;
   border-color: #aaa;
+  }
+`;
+
+export const EmptyImage = styled.img`
+  width: 80vw; 
+  display: block;
+  ;
+`;
+
+export const OverlayContent = styled.div`
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* mínimo 1.5rem, ideal 5vw, máximo 2.5rem */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+`;
+
+
+export const CTAButton = styled.button`
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* ajusta automaticamente */
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #6e7070cf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #8c8d8dcf;
   }
 `;
