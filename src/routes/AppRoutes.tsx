@@ -9,10 +9,14 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/movie-db/" element={<Home />} />
       <Route path="/favorites" element={<Favorites />} />
+      <Route path="/movie-db/favorites" element={<Favorites />} />
       <Route path="/movie/:id" element={<Movie />} />
+      <Route path="/movie-db/movie/:id" element={<Movie />} />
       <Route path="/search" element={<Search />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/movie-db/search" element={<Search />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }

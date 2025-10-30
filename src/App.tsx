@@ -1,4 +1,6 @@
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+
 import AppRoutes from "./routes/AppRoutes";
 import { ThemeContextProvider } from "./contexts/ThemeContextProvider";
 import { GlobalStyle } from "./styles/GlobalStyles";
@@ -12,14 +14,14 @@ export default function App() {
 
   return (
     <ThemeContextProvider>
-      <BrowserRouter>
+      <HashRouter>
         <FavoritesProvider>
           <GlobalStyle />
           <Layout>
             <AppRoutes />
           </Layout>
         </FavoritesProvider>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeContextProvider>
   );
 }

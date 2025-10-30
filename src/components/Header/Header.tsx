@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
     <HeaderContainer>
       <div className="main-header">
         <NavLinks>
-          <a href="/">
+          <a href="/movie-db/">
             <Logo>MovieDB</Logo>
           </a>
         </NavLinks>
@@ -48,8 +48,8 @@ export const Header: React.FC = () => {
         />
 
         <NavLinks>
-          <a href="/">{t("nav.home")}</a>
-          <a href="/favorites">{t("nav.favorites")}</a>
+          <a href="/movie-db/">{t("nav.home")}</a>
+          <a href="/movie-db/#/favorites">{t("nav.favorites")}</a>
         </NavLinks>
         <RightSection>
           <ActionButtons>
