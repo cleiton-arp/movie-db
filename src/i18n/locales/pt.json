@@ -9,5 +9,48 @@
     "home": "Home",
     "details": "Detalhes",
     "favorites": "Favoritos"
+  },
+  "pages": {
+    "favorites": {
+      "myFavorites": "Meus Favoritos",
+      "noFavoritesAdded": "Você ainda não favoritou nenhum filme.",
+      "explore": "Explorar...",
+      "orderBy": "Ordenar por",
+      "alphabeticalAZ": "Alfabética (A–Z)",
+      "alphabeticalZA": "Alfabética (A–Z)",
+      "ratingAsc": "Nota (Maior → Menor)",
+      "ratingDesc": "Nota (Menor → Maior)"
+    },
+    "home": {
+      "popularMovies": "Filmes Populares"
+    },
+    "movie": {
+      "movieNotFound": "Filme não encontrado.",
+      "genres": "Gêneros:",
+      "releaseDate": "Data de lançamento:",
+      "rating": "Nota:",
+      "overview": "Sinopse:"
+    },
+    "notFound": {
+      "pageNotFound": "Ops! Página não encontrada",
+      "notFoundText": "Parece que este filme saiu da tela — ou você se perdeu nos corredores do streaming. Talvez ele tenha ido tomar pipoca.",
+      "checkURL": "Verifique se a URL está correta.",
+      "trySearch": "ente buscar o filme pela barra de pesquisa.",
+      "goToHome": "Volte para a página inicial e explore outras recomendações.",
+      "CTA": "Voltar para a Home",
+      "back": "Voltar",
+      "404": "404 · Página não encontrada",
+      "pageRemoved": "Talvez o endereço esteja errado ou o filme foi removido."
+    },
+    "search": {
+      "results": "Resultados para "
+    }
+  },
+  "components": {
+    "header": {
+      "searchPlaceholder": "Buscar...",
+      "home": "Home",
+      "favorites": "Favoritos"
+    }
   }
 }

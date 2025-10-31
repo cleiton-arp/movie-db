@@ -1,4 +1,4 @@
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 // import { useTheme } from "../../contexts/useTheme";
 import {
   Card,
@@ -16,7 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function NotFound() {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   // const { theme, toggleTheme } = useTheme();
 
   const navigate = useNavigate();
@@ -25,24 +25,21 @@ export default function NotFound() {
     <Page role="main" aria-labelledby="notfound-title">
       <Card>
         <Left>
-          <Title id="notfound-title">Ops! Página não encontrada</Title>
-          <Subtitle>
-            Parece que este filme saiu da tela — ou você se perdeu nos
-            corredores do streaming. Talvez ele tenha ido tomar pipoca.
-          </Subtitle>
+          <Title id="notfound-title">{t("pages.notFound.pageNotFound")}</Title>
+          <Subtitle>{t("pages.notFound.notFoundText")}</Subtitle>
 
           <SuggestionList>
-            <li>Verifique se a URL está correta.</li>
-            <li>Tente buscar o filme pela barra de pesquisa.</li>
-            <li>Volte para a página inicial e explore outras recomendações.</li>
+            <li>{t("pages.notFound.checkURL")}</li>
+            <li>{t("pages.notFound.trySearch")}</li>
+            <li>{t("pages.notFound.goToHome")}</li>
           </SuggestionList>
 
           <Actions>
             <PrimaryButton onClick={() => navigate("/")}>
-              Voltar para a Home
+              {t("pages.notFound.CTA")}
             </PrimaryButton>
             <SecondaryButton onClick={() => navigate(-1)}>
-              Voltar
+              {t("pages.notFound.back")}
             </SecondaryButton>
           </Actions>
         </Left>
@@ -149,7 +146,7 @@ export default function NotFound() {
                   fill="#cbd5e1"
                   fontFamily="Segoe UI, Roboto, Arial"
                 >
-                  404 · Página não encontrada
+                  {t("pages.notFound.404")}
                 </text>
                 <text
                   x="18"
@@ -158,7 +155,7 @@ export default function NotFound() {
                   fill="#94a3b8"
                   fontFamily="Segoe UI, Roboto, Arial"
                 >
-                  Talvez o endereço esteja errado ou o filme foi removido.
+                  {t("pages.notFound.pageRemoved")}
                 </text>
               </g>
             </svg>

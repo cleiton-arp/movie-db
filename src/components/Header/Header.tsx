@@ -42,14 +42,14 @@ export const Header: React.FC = () => {
 
         <SearchBar
           type="text"
-          placeholder={t("search.placeholder")}
+          placeholder={t("components.header.searchPlaceholder")}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyDown}
         />
 
         <NavLinks>
-          <a href="/movie-db/">{t("nav.home")}</a>
-          <a href="/movie-db/#/favorites">{t("nav.favorites")}</a>
+          <a href="/movie-db/">{t("components.header.home")}</a>
+          <a href="/movie-db/#/favorites">{t("components.header.favorites")}</a>
         </NavLinks>
         <RightSection>
           <ActionButtons>

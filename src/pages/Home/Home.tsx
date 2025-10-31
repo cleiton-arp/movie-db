@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Title>{t("Filmes Populares")}</Title>
+      <Title>{t("pages.home.popularMovies")}</Title>
 
       {error && <p>{error}</p>}
 

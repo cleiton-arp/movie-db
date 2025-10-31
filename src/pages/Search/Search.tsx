@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Container, Title, MoviesGrid } from "./Search.styled";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
@@ -13,6 +14,7 @@ interface Movie {
 }
 
 export default function Search() {
+  const { t } = useTranslation();
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("q") || "";
 
@@ -79,7 +81,9 @@ export default function Search() {
 
   return (
     <Container>
-      <Title>Resultados para "{query}"</Title>
+      <Title>
+        {t("pages.search.results")} "{query}"
+      </Title>
 
       {error && <p>{error}</p>}
 

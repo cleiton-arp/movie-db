@@ -17,6 +17,9 @@ export default function AppRoutes() {
       <Route path="/search" element={<Search />} />
       <Route path="/movie-db/search" element={<Search />} />
       <Route path="/*" element={<NotFound />} />
+      <Route path="/movie-db/*" element={<NotFound />} />
+      <Route path="/not-found" element={<NotFound />} />
+      <Route path="/movie-db/not-found*" element={<NotFound />} />
     </Routes>
   );
 }

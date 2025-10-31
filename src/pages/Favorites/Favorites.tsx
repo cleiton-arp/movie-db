@@ -8,14 +8,15 @@ import {
   OverlayContent,
   CTAButton,
 } from "./Favorites.styled";
-import { MoviesGrid } from "../Search/Search.styled"; // <-- importar o grid padrão
+import { MoviesGrid } from "../Search/Search.styled";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { useEffect, useMemo, useState } from "react";
 import api from "../../services/http";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import movieTheather from "../../assets/images/movieTheather.png"; //
+import movieTheather from "../../assets/images/movieTheather.png";
+import { useTranslation } from "react-i18next";
 
 interface Movie {
   id: number;
@@ -25,6 +26,7 @@ interface Movie {
 }
 
 export default function Favorites() {
+  const { t } = useTranslation();
   const { favorites } = useFavorites();
   const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
   const [sortOption, setSortOption] = useState("a-z");
@@ -89,7 +91,7 @@ export default function Favorites() {
 
   return (
     <PageContainer>
-      <Title>Meus Favoritos</Title>
+      <Title>{t("pages.favorites.myFavorites")}</Title>
 
       {loading ? (
         <div
@@ -105,23 +107,30 @@ export default function Favorites() {
         <EmptyState>
           <EmptyImage src={movieTheather} alt="Nenhum favorito ainda" />
           <OverlayContent>
-            Você ainda não favoritou nenhum filme.
-            <CTAButton onClick={() => navigate("/")}>Explorar...</CTAButton>
+            {t("pages.favorites.noFavoritesAdded")}
+            <CTAButton onClick={() => navigate("/")}>
+              {" "}
+              {t("pages.favorites.explore")}
+            </CTAButton>
           </OverlayContent>
         </EmptyState>
       ) : (
         <>
           <SortSelectWrapper>
-            <label htmlFor="sort">Ordenar por:</label>
+            <label htmlFor="sort">{t("pages.favorites.orderBy")}</label>
             <SortSelect
               id="sort"
               value={sortOption}
               onChange={(event) => setSortOption(event.target.value)}
             >
-              <option value="a-z">Alfabética (A–Z)</option>
-              <option value="z-a">Alfabética (Z–A)</option>
-              <option value="rating-desc">Nota (Maior → Menor)</option>
-              <option value="rating-asc">Nota (Menor → Maior)</option>
+              <option value="a-z">{t("pages.favorites.alphabeticalAZ")}</option>
+              <option value="z-a">{t("pages.favorites.alphabeticalZA")}</option>
+              <option value="rating-desc">
+                {t("pages.favorites.ratingAsc")}
+              </option>
+              <option value="rating-asc">
+                {t("pages.favorites.ratingDesc")}
+              </option>
             </SortSelect>
           </SortSelectWrapper>
           <div

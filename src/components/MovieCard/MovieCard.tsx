@@ -15,6 +15,7 @@ import TrashIcon from "../../assets/svg/trash-icon.svg";
 import { useState } from "react";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import { formatMovieRating } from "../../utils/formatters";
+import noImage from "../../assets/images/noImage.png";
 
 interface MovieCardProps {
   id: number;
@@ -93,7 +94,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
       </FavoriteIcon>
 
       <Card onClick={handleClick}>
-        <MovieImage src={image} alt={title} />
+        <MovieImage src={image ? image : noImage} alt={title} />
         <MovieTitle>{renderTitle()}</MovieTitle>
         <MovieRatingContainer>
           {rating && (

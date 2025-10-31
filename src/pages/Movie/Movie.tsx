@@ -1,4 +1,4 @@
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Container, Info, Poster } from "./Movie.styled";
 import api from "../../services/http";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ interface Movie {
 }
 
 export default function Movie() {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState("");
@@ -67,7 +67,7 @@ export default function Movie() {
     );
   }
 
-  if (!movie) return <p>{"Filme não encontrado."}</p>;
+  if (!movie) return <p>{"pages.movie.movieNotFound"}</p>;
 
   return (
     <Container>
@@ -95,17 +95,19 @@ export default function Movie() {
       <Info>
         <h2>{movie.title}</h2>
         <p>
-          <strong>Gêneros:</strong> {movie.genres.map((g) => g.name).join(", ")}
+          <strong>{t("pages.movie.genres")}</strong>{" "}
+          {movie.genres.map((g) => g.name).join(", ")}
         </p>
         <p>
-          <strong>Data de lançamento:</strong>{" "}
+          <strong>{t("pages.movie.releaseDate")}</strong>{" "}
           {formatDateBR(movie.release_date)}
         </p>
         <p>
-          <strong>Nota:</strong> ⭐ {formatMovieRating(movie.vote_average)}
+          <strong>{t("pages.movie.rating")}</strong> ⭐{" "}
+          {formatMovieRating(movie.vote_average)}
         </p>
         <p>
-          <strong>Sinopse:</strong> {movie.overview}
+          <strong>{t("pages.movie.overview")}</strong> {movie.overview}
         </p>
       </Info>
     </Container>

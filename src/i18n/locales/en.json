@@ -9,5 +9,48 @@
     "home": "Home",
     "details": "Details",
     "favorites": "Favorites"
+  },
+  "pages": {
+    "favorites": {
+      "myFavorites": "My Favorites",
+      "noFavoritesAdded": "You haven't added any favorite movies yet.",
+      "explore": "Explore...",
+      "orderBy": "Sort by",
+      "alphabeticalAZ": "Alphabetical (A–Z)",
+      "alphabeticalZA": "Alphabetical (Z–A)",
+      "ratingAsc": "Rating (High → Low)",
+      "ratingDesc": "Rating (Low → High)"
+    },
+    "home": {
+      "popularMovies": "Popular Movies"
+    },
+    "movie": {
+      "movieNotFound": "Movie not found.",
+      "genres": "Genres:",
+      "releaseDate": "Release date:",
+      "rating": "Rating:",
+      "overview": "Overview:"
+    },
+    "notFound": {
+      "pageNotFound": "Oops! Page not found",
+      "notFoundText": "It looks like this movie left the screen — or you got lost in the streaming halls. Maybe it went to grab some popcorn.",
+      "checkURL": "Please check if the URL is correct.",
+      "trySearch": "Try searching for the movie using the search bar.",
+      "goToHome": "Go back to the home page and explore other recommendations.",
+      "CTA": "Back to Home",
+      "back": "Back",
+      "404": "404 · Page not found",
+      "pageRemoved": "The address might be incorrect or the movie may have been removed."
+    },
+    "search": {
+      "results": "Results for "
+    }
+  },
+  "components": {
+    "header": {
+      "searchPlaceholder": "Search...",
+      "home": "Home",
+      "favorites": "Favorites"
+    }
   }
 }
