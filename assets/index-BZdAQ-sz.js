@@ -561,6 +561,7 @@ Please change the parent <Route path="${Y}"> to <Route path="${Y==="/"?"*":`${Y}
   align-items: center;
   padding: 0.5rem ;
   @media (max-width: 800px) {
+    position: relative;
     height: 200px
   }
 
@@ -668,4 +669,6 @@ Please change the parent <Route path="${Y}"> to <Route path="${Y==="/"?"*":`${Y}
   }
 `;ee(oO)``;const fO=()=>{const{t:a,i18n:l}=_l(),{theme:r,toggleTheme:u}=lO(),o=()=>{const m=l.language==="en"?"pt":"en";l.changeLanguage(m),localStorage.setItem("lang",m)},[f,d]=N.useState(""),p=Vi(),g=m=>{m.key==="Enter"&&f.trim()!==""&&p(`/search?q=${encodeURIComponent(f.trim())}`)};return z.jsx(iO,{children:z.jsxs("div",{className:"main-header",children:[z.jsx(Bg,{children:z.jsx("a",{href:"/movie-db/",children:z.jsx(rO,{children:"MovieDB"})})}),z.jsx(uO,{type:"text",placeholder:a("components.header.searchPlaceholder"),onChange:m=>d(m.target.value),onKeyDown:g}),z.jsxs(Bg,{children:[z.jsx("a",{href:"/movie-db/",children:a("components.header.home")}),z.jsx("a",{href:"/movie-db/#/favorites",children:a("components.header.favorites")})]}),z.jsx(sO,{children:z.jsxs(cO,{children:[z.jsx(qg,{onClick:u,children:r==="light"?"🌙":"☀️"}),z.jsx(qg,{onClick:o,children:l.language==="en"?"en":"pt"})]})})]})})},dO=50,hO=ee.div`
   padding-top: ${dO}px; /* espaço reservado para o header fixo */
+  @media (max-width: 800px) {
+  }
 `,pO=({children:a})=>z.jsxs(z.Fragment,{children:[z.jsx(fO,{}),z.jsx(hO,{children:a})]});function mO(){return z.jsx(AT,{children:z.jsx(cb,{children:z.jsxs(QE,{children:[z.jsx(hy,{}),z.jsx(pO,{children:z.jsx(TT,{})})]})})})}const gO={colors:{primary:"#007bff",secondary:"#6c757d",background:"#ffffff",text:"#000000"}};J1.createRoot(document.getElementById("root")).render(z.jsx(Qt.StrictMode,{children:z.jsx(M0,{theme:gO,children:z.jsx(mO,{})})}));
