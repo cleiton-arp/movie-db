@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
               {theme === "light" ? "🌙" : "☀️"}
             </ToggleButton>
             <ToggleButton onClick={onToggleLanguage}>
-              {i18n.language === "en" ? "en" : "🇧🇷"}
+              {i18n.language === "en" ? "en" : "pt"}
             </ToggleButton>
           </ActionButtons>
         </RightSection>

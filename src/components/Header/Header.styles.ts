@@ -11,6 +11,9 @@ export const HeaderContainer = styled.header`
   flex-direction: column;
   align-items: center;
   padding: 0.5rem ;
+  @media (max-width: 800px) {
+    height: 200px
+  }
 
   .main-header {
     width: 100%;
@@ -18,6 +21,13 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 800px) {
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   }
 `;
 
@@ -35,7 +45,8 @@ export const Logo = styled.div`
 `;
 
 export const SearchBar = styled.input`
-  flex: 1;
+  height: 36px;
+  width: 100%;
   max-width: 400px;
   margin: 0 2rem;
   padding: 0.5rem 1rem;
