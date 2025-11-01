@@ -35,8 +35,10 @@ export default function Movie() {
   const { toggleFavorite, isFavorite } = useFavorites();
   const favoriteState = isFavorite(Number(id));
 
-  const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleFavoriteClick = (
+    e?: React.MouseEvent | React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    e?.stopPropagation();
     toggleFavorite(Number(id));
     setAnimateHeart(true);
     setTimeout(() => setAnimateHeart(false), 400);
@@ -81,8 +83,21 @@ export default function Movie() {
           alt={movie.title}
         />
         <FavoriteIcon
+          role="button"
+          tabIndex={0}
+          aria-label={
+            favoriteState
+              ? `Remover ${movie.title} dos favoritos`
+              : `Adicionar ${movie.title} aos favoritos`
+          }
           animate={animateHeart}
           onClick={handleFavoriteClick}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              handleFavoriteClick(event);
+            }
+          }}
           isFavorite={favoriteState}
         >
           <img

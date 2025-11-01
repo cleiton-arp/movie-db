@@ -50,7 +50,8 @@
     "header": {
       "searchPlaceholder": "Search...",
       "home": "Home",
-      "favorites": "Favorites"
+      "favorites": "Favorites",
+      "toggleLanguage": "Change language"
     }
   }
 }

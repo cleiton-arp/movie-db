@@ -42,6 +42,7 @@ export const Header: React.FC = () => {
 
         <SearchBar
           type="text"
+          aria-label={t("components.header.searchAriaLabel")}
           placeholder={t("components.header.searchPlaceholder")}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyDown}
@@ -53,10 +54,16 @@ export const Header: React.FC = () => {
         </NavLinks>
         <RightSection>
           <ActionButtons>
-            <ToggleButton onClick={toggleTheme}>
+            <ToggleButton
+              aria-label={t("components.header.toggleTheme")}
+              onClick={toggleTheme}
+            >
               {theme === "light" ? "🌙" : "☀️"}
             </ToggleButton>
-            <ToggleButton onClick={onToggleLanguage}>
+            <ToggleButton
+              aria-label={t("components.header.toggleLanguage")}
+              onClick={onToggleLanguage}
+            >
               {i18n.language === "en" ? "en" : "pt"}
             </ToggleButton>
           </ActionButtons>

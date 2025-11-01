@@ -44,8 +44,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
     navigate(`/movie/${id}`);
   };
 
-  const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleFavoriteClick = (
+    e?: React.MouseEvent | React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    e?.stopPropagation();
     toggleFavorite(id);
     setAnimateHeart(true);
     setTimeout(() => setAnimateHeart(false), 400);
@@ -76,8 +78,21 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <CardWrapper>
       <FavoriteIcon
+        role="button"
+        tabIndex={0}
+        aria-label={
+          favoriteState
+            ? `Remover ${title} dos favoritos`
+            : `Adicionar ${title} aos favoritos`
+        }
         animate={animateHeart}
         onClick={handleFavoriteClick}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            handleFavoriteClick(event);
+          }
+        }}
         isFavorite={favoriteState}
       >
         <img
@@ -93,7 +108,18 @@ const MovieCard: React.FC<MovieCardProps> = ({
         />
       </FavoriteIcon>
 
-      <Card onClick={handleClick}>
+      <Card
+        role="button"
+        tabIndex={0}
+        aria-label={`Abrir detalhes do filme ${title}`}
+        onClick={handleClick}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            handleClick();
+          }
+        }}
+      >
         <MovieImage src={image ? image : noImage} alt={title} />
         <MovieTitle>{renderTitle()}</MovieTitle>
         <MovieRatingContainer>

@@ -119,6 +119,7 @@ export default function Favorites() {
           <SortSelectWrapper>
             <label htmlFor="sort">{t("pages.favorites.orderBy")}</label>
             <SortSelect
+              tabIndex={0}
               id="sort"
               value={sortOption}
               onChange={(event) => setSortOption(event.target.value)}

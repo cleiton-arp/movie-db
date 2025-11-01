@@ -6,6 +6,7 @@ const HEADER_HEIGHT = 50;
 const ContentWrapper = styled.div`
   padding-top: ${HEADER_HEIGHT}px; /* espaço reservado para o header fixo */
   @media (max-width: 800px) {
+    padding-top: 0;
   }
 `;
 

@@ -63,11 +63,10 @@ export const SortSelect = styled.select`
   padding: 6px 12px;
   font-size: 0.95rem;
   cursor: pointer;
-  outline: none;
 
   &:hover {
     background-color: #dcdcdc;
-  border-color: #aaa;
+    border-color: #aaa;
   }
 `;
 
