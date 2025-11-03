@@ -77,7 +77,7 @@ export const EmptyImage = styled.img`
 `;
 
 export const OverlayContent = styled.div`
-  font-size: clamp(1.5rem, 5vw, 2.5rem); /* mínimo 1.5rem, ideal 5vw, máximo 2.5rem */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -93,7 +93,7 @@ export const OverlayContent = styled.div`
 
 
 export const CTAButton = styled.button`
-  font-size: clamp(1.5rem, 5vw, 2.5rem); /* ajusta automaticamente */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #6e7070cf;

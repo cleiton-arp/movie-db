@@ -25,10 +25,6 @@ Aplicação React que consome a API do The Movie Database (TMDB)
 
 - **[Jest](https://jestjs.io/)**
 
-### **Documentação de Componentes**
-
-- **Storybook 10**
-
 ## API Utilizada
 
 O projeto consome a API do **[The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api)** para buscar informações sobre filmes

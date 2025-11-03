@@ -18,5 +18,5 @@ export const SpinnerSVG = styled.svg`
   animation: ${spin} 1s linear infinite;
   width: 48px;
   height: 48px;
-  stroke: #ffcc00; /* cor do spinner */
+  stroke: #ffcc00;
 `;
