@@ -19,6 +19,9 @@ export default function Search() {
   const query = new URLSearchParams(location.search).get("q") || "";
 
   const [movies, setMovies] = useState<Movie[]>([]);
+  const uniqueMovies = movies.filter(
+    (movie, index, self) => index === self.findIndex((m) => m.id === movie.id)
+  );
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -88,7 +91,7 @@ export default function Search() {
       {error && <p>{error}</p>}
 
       <MoviesGrid>
-        {movies.map((movie) => (
+        {uniqueMovies.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

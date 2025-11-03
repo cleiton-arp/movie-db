@@ -16,6 +16,9 @@ interface TMDBResponse {
 export default function Home() {
   const { t } = useTranslation();
   const [movies, setMovies] = useState<Movie[]>([]);
+  const uniqueMovies = movies.filter(
+    (movie, index, self) => index === self.findIndex((m) => m.id === movie.id)
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
@@ -84,7 +87,7 @@ export default function Home() {
         }}
       >
         <MoviesGrid>
-          {movies.map((movie) => (
+          {uniqueMovies.map((movie) => (
             <MovieCard
               key={movie.id}
               id={movie.id}

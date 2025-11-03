@@ -71,7 +71,9 @@ const pulseColor = keyframes`
 `;
 
 
-export const FavoriteIcon = styled.div<{ isFavorite: boolean; animate: boolean }>`
+export const FavoriteIcon = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "animate" && prop !== "isFavorite"
+})<{ isFavorite: boolean; animate: boolean }>`
   position: absolute;
   top: 8px;
   right: 8px;
@@ -89,7 +91,8 @@ export const FavoriteIcon = styled.div<{ isFavorite: boolean; animate: boolean }
     height: 100%;
     transition: fill 0.3s, filter 0.3s;
     animation: ${(props) => (props.animate ? pulseColor : "none")} 0.4s ease;
-    filter: ${(props) => (props.isFavorite ? "brightness(1)" : "brightness(0.7)")};
+    filter: ${(props) =>
+      props.isFavorite ? "brightness(1)" : "brightness(0.7)"};
   }
 `;
 
